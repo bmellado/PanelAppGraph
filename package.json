@@ -1,0 +1,53 @@
+{
+  "name": "panelappgraph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valerojasm/PanelAppGraph.git"
+  },
+  "author": "Valentina Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valerojasm/PanelAppGraph/issues"
+  },
+  "homepage": "https://github.com/valerojasm/PanelAppGraph#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "schema/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick --staged"
+    ],
+    "lib/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick --staged"
+    ],
+    "test/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick --staged"
+    ]
+  }
+}
