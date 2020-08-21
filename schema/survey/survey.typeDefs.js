@@ -18,6 +18,11 @@ const typeDefs = gql`
     deleteSurvey(input: DeleteSurveyInput!): Boolean!
   }
 
+  extend type Query {
+    adminSurveys(adminId: ID!): [Survey]
+    surveyeeSurveys(surveyeeId: ID!): [Survey]
+  }
+
   input CreateSurveyInput {
     adminId: ID!
     description: String!
