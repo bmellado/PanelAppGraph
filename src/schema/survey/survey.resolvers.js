@@ -13,6 +13,17 @@ const resolvers = {
       }
     },
   },
+  Mutation: {
+    // eslint-disable-next-line no-unused-vars
+    createSurvey: async (_parent, { input }, _) => {
+      try {
+        const survey = orm.Survey.build({ input });
+        return survey;
+      } catch (error) {
+        return error;
+      }
+    },
+  },
 };
 
 module.exports = { resolvers };
