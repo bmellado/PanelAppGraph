@@ -1,5 +1,5 @@
 const resolvers = {
-  Admin: {},
+  Panel: {},
 };
 
 module.exports = { resolvers };

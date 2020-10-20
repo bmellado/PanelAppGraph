@@ -5,10 +5,17 @@
     "jest": true,
     "node": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parserOptions": {
-    "ecmaVersion": 11,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "rules": {}
+  "plugins": ["react", "graphql", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": ["off"]
+  }
 }
