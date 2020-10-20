@@ -49,7 +49,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ec2-user
+      device: /Users/valerojasm/Desktop/IMFD/PanelAppGraph
       o: bind
 
 networks:

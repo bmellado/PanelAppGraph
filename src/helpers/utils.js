@@ -11,13 +11,14 @@ const generateToken = (user) => {
   return accessToken;
 };
 
-const getUserPassword = (user, password) => {
-  bcrypt.compare(password, user.password, (err, result) => {
+const verifyUserPassword = (user, password) => {
+  bcrypt.compare(password, user.password, async (err, result) => {
     if (result) {
-      return generateToken(user);
+      const token = await generateToken(user);
+      return token;
     }
     return false;
   });
 };
 
-module.exports = { generateToken, getUserPassword };
+module.exports = { generateToken, verifyUserPassword };

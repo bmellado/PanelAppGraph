@@ -4,7 +4,7 @@ const typeDefs = gql`
   "Basic user survey model"
   type UserSurvey {
     id: ID!
-    privateLink: String!
+    qualtricsLink: String!
     status: String!
     survey: Survey!
     user: User!

@@ -1,4 +1,11 @@
-const hash = require('bcrypt');
+const bcrypt = require('bcrypt');
+
+const buildPasswordHash = async (instance) => {
+  if (instance.changed('password')) {
+    const hash = await bcrypt.hash(instance.password, 10);
+    instance.set('password', hash);
+  }
+};
 
 const User = (sequelize, DataTypes) => {
   const user = sequelize.define('User', {
@@ -17,6 +24,7 @@ const User = (sequelize, DataTypes) => {
       unique: true,
       validation: {
         isEmail: true,
+        notEmpty: { args: true, msg: "Email can't be empty" },
       },
     },
     firstName: {
@@ -28,14 +36,11 @@ const User = (sequelize, DataTypes) => {
       default: false,
     },
     password: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING,
       allowNull: false,
-      set(value) {
-        const hashPwd = hash(value, 10, (err, hashed) => {
-          if (err) throw err;
-          return hashed;
-        });
-        this.setDataValue('password', hashPwd);
+      validate: {
+        notEmpty: { args: true, msg: "Password can't be empty" },
+        len: { args: [6], msg: 'Password must be at least 6 characters long' },
       },
     },
     paternalName: {
@@ -43,6 +48,13 @@ const User = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+
+  user.beforeUpdate(buildPasswordHash);
+  user.beforeCreate(buildPasswordHash);
+
+  user.prototype.checkPassword = function checkPassword(password) {
+    return bcrypt.compare(password, this.password);
+  };
 
   user.associate = (models) => {
     user.belongsToMany(models.AppModule, {
@@ -53,9 +65,9 @@ const User = (sequelize, DataTypes) => {
       through: 'PanelSurveyees',
       as: 'panels',
     });
-    user.belongsToMany(models.Survey, {
-      through: 'UserSurveys',
-      as: 'surveyees',
+    user.hasMany(models.UserSurvey, {
+      foreignKey: { allowNull: false },
+      onDelete: 'CASCADE',
     });
   };
 

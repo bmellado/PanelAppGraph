@@ -1,9 +1,13 @@
 const app = require('./app');
 const orm = require('../sequelize/models');
 const router = require('./routes');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const PORT = process.env.DB_PORT || 8080;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use('/api', router);
 
 const assertDatabaseConnection = async () => {

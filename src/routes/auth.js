@@ -11,16 +11,16 @@ router.post('/token', async (req, res) => {
   try {
     const { email } = req.body;
     const { password } = req.body;
-    const user = await orm.User.findAll({
+    const user = await orm.models.User.findOne({
       where: { email },
     });
-    const token = verifyUserPassword(user, password);
+    const token = await verifyUserPassword(user, password);
     if (token) {
       return res.status(200).json({
         token,
       });
     }
-    return res.status(503).send('Clave incorrecta');
+    return res.status(503).send('Usuario no existe o clave incorrecta');
   } catch (error) {
     return res.status(500).send(error.message);
   }

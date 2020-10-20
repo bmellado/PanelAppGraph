@@ -25,7 +25,7 @@ const UserSurvey = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
-    qualtricsLink: {
+    privateLink: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -36,7 +36,7 @@ const UserSurvey = (sequelize, DataTypes) => {
     },
     linkExpirationDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
   });
 

@@ -16,4 +16,6 @@ const server = new ApolloServer({
 const app = express();
 server.applyMiddleware({ app, path: '/graphql' });
 
+app.use(express.json());
+
 module.exports = app;
