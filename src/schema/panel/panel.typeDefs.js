@@ -20,7 +20,11 @@ const typeDefs = gql`
     module: ID
     description: String!
     name: String!
-    surveyees: [User]
+    surveyees: [UserInput]
+  }
+
+  input UserInput {
+    id: ID!
   }
 `;
 

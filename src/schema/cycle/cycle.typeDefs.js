@@ -27,13 +27,25 @@ const typeDefs = gql`
     description: String!
     endDate: String!
     name: String!
-    panel: Panel!
+    panel: CyclePanelInput!
     releaseDate: String!
-    tags: [Tag]
+    tags: [CycleTagInput]
+  }
+
+  input CycleTagInput {
+    id: ID!
+  }
+
+  input CyclePanelInput {
+    id: ID!
   }
 
   input AddSurveysToCycleInput {
-    surveys: [Survey]
+    surveys: [SurveyInput]
+  }
+
+  input SurveyInput {
+    id: ID!
   }
 `;
 

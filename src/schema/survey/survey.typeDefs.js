@@ -24,14 +24,14 @@ const typeDefs = gql`
       name: String!
       panel: ID
       pointsAmount: Int!
-      tags: [Tag]
+      tags: [TagInput]
       qualtricsName: String!
       qualtricsId: String!
     ): Survey!
   }
 
   extend type Query {
-    Survey:(id: ID!): Survey
+    Survey(id: ID!): Survey
     panelSurveys(panelId: ID!): [Survey]
     allSurveys: [Survey]
   }
@@ -42,9 +42,13 @@ const typeDefs = gql`
     name: String!
     panel: ID
     pointsAmount: Int!
-    tags: [Tag]
+    tags: [TagInput]
     qualtricsName: String!
     qualtricsId: String!
+  }
+
+  input TagInput {
+    id: ID!
   }
 `;
 
