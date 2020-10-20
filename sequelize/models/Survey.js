@@ -25,6 +25,10 @@ const Survey = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    qualtricsName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     releaseDate: {
       type: DataTypes.DATE,
       allowNull: false,

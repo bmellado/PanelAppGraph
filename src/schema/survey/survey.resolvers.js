@@ -6,7 +6,7 @@ const resolvers = {
     // eslint-disable-next-line no-unused-vars
     allSurveys: async (_parent, _args, _) => {
       try {
-        const surveys = await orm.Survey.findAll();
+        const surveys = await orm.models.Survey.findAll();
         return surveys;
       } catch (error) {
         return error;
@@ -15,9 +15,9 @@ const resolvers = {
   },
   Mutation: {
     // eslint-disable-next-line no-unused-vars
-    createSurvey: async (_parent, { input }, _) => {
+    createSurvey: async (_parent, input, _arg) => {
       try {
-        const survey = orm.Survey.build({ input });
+        const survey = orm.models.Survey.create(input);
         return survey;
       } catch (error) {
         return error;

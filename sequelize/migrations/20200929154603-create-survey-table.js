@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.DataTypes.BIGINT,
         allowNull: true,
       },
+      qualtricsName: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+      },
       qualtricsId: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,

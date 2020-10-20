@@ -5,7 +5,7 @@ const typeDefs = gql`
     id: ID!
     cycle: Cycle
     description: String!
-    endDate: String!
+    expirationDate: String!
     name: String!
     panel: Panel
     pointsAmount: Int!
@@ -21,12 +21,14 @@ const typeDefs = gql`
     createSurvey(
       cycle: ID
       description: String!
+      expirationDate: String!
       name: String!
       panel: ID
       pointsAmount: Int!
       tags: [TagInput]
       qualtricsName: String!
       qualtricsId: String!
+      releaseDate: String!
     ): Survey!
   }
 
