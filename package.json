@@ -57,6 +57,7 @@
     "graphql": "^15.3.0",
     "graphql-middleware": "^4.0.2",
     "graphql-tools": "^6.0.18",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
